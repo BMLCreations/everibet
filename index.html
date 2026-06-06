@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EveriBet — Any bet. Any friend. Any time.</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background-color: #0d0d0d;
@@ -18,6 +14,33 @@
       overflow-x: hidden;
     }
 
+    /* Fade-up animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.06; transform: translateX(-50%) scale(1); }
+      50%       { opacity: 0.12; transform: translateX(-50%) scale(1.08); }
+    }
+
+    .animate {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Nav */
     nav {
       display: flex;
       justify-content: space-between;
@@ -26,9 +49,11 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(13, 13, 13, 0.85);
-      backdrop-filter: blur(12px);
+      background: rgba(13, 13, 13, 0.8);
+      backdrop-filter: blur(16px);
       z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      animation: fadeIn 0.8s ease forwards;
     }
 
     .logo {
@@ -37,22 +62,17 @@
       letter-spacing: -0.5px;
       color: #ffffff;
     }
-
-    .logo span {
-      color: #c8f135;
-    }
+    .logo span { color: #c8f135; }
 
     nav a {
-      color: #aaa;
+      color: #666;
       text-decoration: none;
       font-size: 15px;
       transition: color 0.2s;
     }
+    nav a:hover { color: #c8f135; }
 
-    nav a:hover {
-      color: #c8f135;
-    }
-
+    /* Hero */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -60,54 +80,67 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 120px 24px 80px;
+      padding: 140px 24px 100px;
       position: relative;
+      overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
+    .hero-glow {
       position: absolute;
-      top: 20%;
+      top: 15%;
       left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(200, 241, 53, 0.08) 0%, transparent 70%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(200, 241, 53, 0.07) 0%, transparent 65%);
+      pointer-events: none;
+      animation: pulse-glow 6s ease-in-out infinite;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 100%);
       pointer-events: none;
     }
 
     .badge {
       display: inline-block;
-      background: rgba(200, 241, 53, 0.1);
-      border: 1px solid rgba(200, 241, 53, 0.3);
+      background: rgba(200, 241, 53, 0.08);
+      border: 1px solid rgba(200, 241, 53, 0.25);
       color: #c8f135;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 18px;
       border-radius: 100px;
-      margin-bottom: 32px;
-      letter-spacing: 0.5px;
+      margin-bottom: 36px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      animation: fadeUp 0.7s ease 0.1s both;
     }
 
     .hero h1 {
-      font-size: clamp(42px, 7vw, 80px);
+      font-size: clamp(44px, 7.5vw, 88px);
       font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -2px;
-      max-width: 800px;
-      margin-bottom: 20px;
+      line-height: 1.02;
+      letter-spacing: -3px;
+      max-width: 860px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.7s ease 0.25s both;
     }
 
-    .hero h1 span {
-      color: #c8f135;
-    }
+    .hero h1 span { color: #c8f135; }
 
     .hero p {
-      font-size: clamp(18px, 2.5vw, 22px);
-      color: #888;
-      max-width: 480px;
-      line-height: 1.5;
-      margin-bottom: 48px;
+      font-size: clamp(17px, 2.2vw, 20px);
+      color: #666;
+      max-width: 460px;
+      line-height: 1.6;
+      margin-bottom: 52px;
+      animation: fadeUp 0.7s ease 0.4s both;
     }
 
     .cta-group {
@@ -116,132 +149,225 @@
       align-items: center;
       flex-wrap: wrap;
       justify-content: center;
+      animation: fadeUp 0.7s ease 0.55s both;
     }
 
     .btn-primary {
       background: #c8f135;
       color: #0d0d0d;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
-      padding: 16px 32px;
+      padding: 15px 32px;
       border-radius: 100px;
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      letter-spacing: -0.2px;
     }
-
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(200, 241, 53, 0.3);
+      box-shadow: 0 10px 40px rgba(200, 241, 53, 0.35);
+      background: #d4f74a;
     }
 
     .btn-secondary {
-      color: #aaa;
+      color: #555;
       font-size: 15px;
       text-decoration: none;
       transition: color 0.2s;
+      letter-spacing: -0.2px;
+    }
+    .btn-secondary:hover { color: #fff; }
+
+    /* Stats bar */
+    .stats-bar {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 80px;
+      padding-top: 48px;
+      border-top: 1px solid #1a1a1a;
+      width: 100%;
+      max-width: 700px;
+      animation: fadeUp 0.7s ease 0.7s both;
+    }
+    .stat { text-align: center; }
+    .stat-number {
+      font-size: 32px;
+      font-weight: 900;
+      color: #c8f135;
+      letter-spacing: -1px;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: #555;
+      margin-top: 4px;
+      letter-spacing: 0.3px;
     }
 
-    .btn-secondary:hover {
-      color: #fff;
-    }
-
+    /* Features */
     .features {
-      padding: 100px 24px;
+      padding: 120px 24px;
       max-width: 1100px;
       margin: 0 auto;
     }
 
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #c8f135;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: block;
+    }
+
     .features-header {
       text-align: center;
-      margin-bottom: 64px;
+      margin-bottom: 72px;
     }
 
     .features-header h2 {
       font-size: clamp(32px, 5vw, 52px);
-      font-weight: 800;
-      letter-spacing: -1px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
       margin-bottom: 16px;
+      line-height: 1.08;
     }
 
     .features-header p {
-      color: #888;
-      font-size: 18px;
+      color: #666;
+      font-size: 17px;
     }
 
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
+      gap: 20px;
     }
 
     .feature-card {
-      background: #161616;
-      border: 1px solid #222;
+      background: #111;
+      border: 1px solid #1e1e1e;
       border-radius: 20px;
       padding: 36px;
-      transition: border-color 0.2s, transform 0.2s;
+      transition: border-color 0.3s, transform 0.3s, background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,241,53,0.15), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
     }
 
     .feature-card:hover {
-      border-color: rgba(200, 241, 53, 0.3);
-      transform: translateY(-4px);
+      border-color: rgba(200, 241, 53, 0.2);
+      transform: translateY(-6px);
+      background: #141414;
     }
 
-    .feature-icon {
-      font-size: 36px;
-      margin-bottom: 20px;
+    .feature-card:hover::before { opacity: 1; }
+
+    .feature-icon-box {
+      width: 48px;
+      height: 48px;
+      background: rgba(200, 241, 53, 0.08);
+      border: 1px solid rgba(200, 241, 53, 0.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .feature-icon-box svg {
+      width: 22px;
+      height: 22px;
+      stroke: #c8f135;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .feature-card h3 {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
     }
 
     .feature-card p {
-      color: #777;
-      line-height: 1.6;
-      font-size: 15px;
+      color: #666;
+      line-height: 1.65;
+      font-size: 14px;
     }
 
+    /* How it works */
     .how-it-works {
-      padding: 100px 24px;
-      background: #111;
+      padding: 120px 24px;
+      position: relative;
+    }
+
+    .how-it-works::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(200,241,53,0.02) 50%, transparent);
+      pointer-events: none;
     }
 
     .how-it-works-inner {
-      max-width: 800px;
+      max-width: 680px;
       margin: 0 auto;
       text-align: center;
     }
 
     .how-it-works h2 {
       font-size: clamp(32px, 5vw, 52px);
-      font-weight: 800;
-      letter-spacing: -1px;
-      margin-bottom: 64px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 72px;
     }
 
     .steps {
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 0;
       text-align: left;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      left: 17px;
+      top: 36px;
+      bottom: 36px;
+      width: 1px;
+      background: linear-gradient(180deg, #c8f135, rgba(200,241,53,0.1));
     }
 
     .step {
       display: flex;
-      gap: 24px;
+      gap: 28px;
       align-items: flex-start;
+      padding: 28px 0;
     }
 
     .step-number {
       background: #c8f135;
       color: #0d0d0d;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 800;
       width: 36px;
       height: 36px;
@@ -250,45 +376,64 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      margin-top: 2px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 0 6px #0d0d0d;
     }
 
     .step h3 {
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
+      padding-top: 6px;
     }
 
     .step p {
-      color: #777;
-      line-height: 1.6;
-      font-size: 15px;
+      color: #666;
+      line-height: 1.65;
+      font-size: 14px;
     }
 
+    /* CTA */
     .cta-section {
-      padding: 120px 24px;
+      padding: 140px 24px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(200,241,53,0.06) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .cta-section h2 {
-      font-size: clamp(36px, 6vw, 64px);
+      font-size: clamp(36px, 6vw, 68px);
       font-weight: 900;
       letter-spacing: -2px;
       margin-bottom: 20px;
+      line-height: 1.02;
     }
 
-    .cta-section h2 span {
-      color: #c8f135;
-    }
+    .cta-section h2 span { color: #c8f135; }
 
     .cta-section p {
-      color: #888;
-      font-size: 18px;
+      color: #666;
+      font-size: 17px;
       margin-bottom: 48px;
     }
 
+    /* Footer */
     footer {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid #161616;
       padding: 40px 48px;
       display: flex;
       justify-content: space-between;
@@ -297,37 +442,22 @@
       gap: 16px;
     }
 
-    footer p {
-      color: #555;
-      font-size: 14px;
-    }
+    footer p { color: #444; font-size: 13px; }
 
     footer a {
-      color: #555;
+      color: #444;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13px;
       transition: color 0.2s;
     }
+    footer a:hover { color: #c8f135; }
 
-    footer a:hover {
-      color: #c8f135;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
+    .footer-links { display: flex; gap: 24px; }
 
     @media (max-width: 600px) {
-      nav {
-        padding: 20px 24px;
-      }
-
-      footer {
-        padding: 32px 24px;
-        flex-direction: column;
-        text-align: center;
-      }
+      nav { padding: 20px 24px; }
+      .stats-bar { gap: 28px; }
+      footer { padding: 32px 24px; flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -339,6 +469,9 @@
   </nav>
 
   <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-grid"></div>
+
     <div class="badge">Coming Soon to the App Store</div>
     <h1>Any bet. Any friend. <span>Any time.</span></h1>
     <p>Every argument. Every bet. Track it all with your friends — no stakes required.</p>
@@ -346,76 +479,114 @@
       <a href="#notify" class="btn-primary">Get Early Access</a>
       <a href="#how-it-works" class="btn-secondary">See how it works →</a>
     </div>
+
+    <div class="stats-bar">
+      <div class="stat">
+        <div class="stat-number">1v1</div>
+        <div class="stat-label">Challenges</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">Groups</div>
+        <div class="stat-label">Bet with the crew</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">Free</div>
+        <div class="stat-label">To download</div>
+      </div>
+    </div>
   </section>
 
   <section class="features">
-    <div class="features-header">
-      <h2>Built for <span style="color:#c8f135">real bets</span> between real friends</h2>
+    <div class="features-header animate">
+      <span class="section-label">Features</span>
+      <h2>Built for real bets<br>between real friends</h2>
       <p>No sportsbooks. No odds. Just you, your friends, and bragging rights.</p>
     </div>
     <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🤝</div>
+
+      <div class="feature-card animate">
+        <div class="feature-icon-box">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
         <h3>1-on-1 Bets</h3>
         <p>Challenge any friend to a bet on anything. They accept, you both track it, and the winner gets the glory.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">👥</div>
+
+      <div class="feature-card animate">
+        <div class="feature-icon-box">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
         <h3>Group Bets</h3>
         <p>Get the whole crew in on it. Create group bets where everyone has a stake in the outcome.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">📊</div>
+
+      <div class="feature-card animate">
+        <div class="feature-icon-box">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
         <h3>Track Your Record</h3>
         <p>See your all-time win/loss record. Know who owes who. Flex your stats.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔔</div>
+
+      <div class="feature-card animate">
+        <div class="feature-icon-box">
+          <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </div>
         <h3>Stay Notified</h3>
         <p>Get notified when friends challenge you, accept your bet, or when it's time to settle up.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">🎯</div>
+
+      <div class="feature-card animate">
+        <div class="feature-icon-box">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
         <h3>Bet on Anything</h3>
         <p>Sports, games, life events, trivia — if you can argue about it, you can bet on it.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">🏆</div>
+
+      <div class="feature-card animate">
+        <div class="feature-icon-box">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
         <h3>Bragging Rights</h3>
         <p>The real prize. Keep the receipts. Never let your friends forget who was right.</p>
       </div>
+
     </div>
   </section>
 
   <section class="how-it-works" id="how-it-works">
     <div class="how-it-works-inner">
-      <h2>How it works</h2>
+      <div class="animate">
+        <span class="section-label">How it works</span>
+        <h2>From challenge<br>to settled in seconds</h2>
+      </div>
       <div class="steps">
-        <div class="step">
+        <div class="step animate">
           <div class="step-number">1</div>
           <div>
             <h3>Create a bet</h3>
             <p>Name the bet, set the terms, and challenge a friend. It takes seconds.</p>
           </div>
         </div>
-        <div class="step">
+        <div class="step animate">
           <div class="step-number">2</div>
           <div>
             <h3>Friend accepts</h3>
             <p>Your friend gets notified, reviews the terms, and accepts or declines.</p>
           </div>
         </div>
-        <div class="step">
+        <div class="step animate">
           <div class="step-number">3</div>
           <div>
             <h3>Wait for the outcome</h3>
             <p>The bet goes live. Both sides watch and wait. No take-backs.</p>
           </div>
         </div>
-        <div class="step">
+        <div class="step animate">
           <div class="step-number">4</div>
           <div>
-            <h3>Settle up & flex</h3>
+            <h3>Settle up</h3>
             <p>Confirm the winner, update your record, and make sure everyone knows about it.</p>
           </div>
         </div>
@@ -424,9 +595,11 @@
   </section>
 
   <section class="cta-section" id="notify">
-    <h2>Ready to <span>make it interesting?</span></h2>
-    <p>EveriBet is launching soon. Be the first to know.</p>
-    <a href="mailto:bmstudioco@gmail.com?subject=EveriBet Early Access" class="btn-primary">Get Early Access</a>
+    <div class="animate">
+      <h2>Ready to make it<br><span>interesting?</span></h2>
+      <p>EveriBet is launching soon. Be the first to know.</p>
+      <a href="mailto:bmstudioco@gmail.com?subject=EveriBet Early Access" class="btn-primary">Get Early Access</a>
+    </div>
   </section>
 
   <footer>
@@ -437,6 +610,19 @@
       <a href="mailto:bmstudioco@gmail.com">Contact</a>
     </div>
   </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
