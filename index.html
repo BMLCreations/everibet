@@ -1,5 +1,442 @@
-<html>
-  <body>
-    <h1>EveriBet</h1>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EveriBet — Any bet. Any friend. Any time.</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow-x: hidden;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 48px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(13, 13, 13, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+    }
+
+    .logo span {
+      color: #c8f135;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 15px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #c8f135;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(200, 241, 53, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(200, 241, 53, 0.1);
+      border: 1px solid rgba(200, 241, 53, 0.3);
+      color: #c8f135;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      max-width: 800px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #c8f135;
+    }
+
+    .hero p {
+      font-size: clamp(18px, 2.5vw, 22px);
+      color: #888;
+      max-width: 480px;
+      line-height: 1.5;
+      margin-bottom: 48px;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: #c8f135;
+      color: #0d0d0d;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(200, 241, 53, 0.3);
+    }
+
+    .btn-secondary {
+      color: #aaa;
+      font-size: 15px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      color: #fff;
+    }
+
+    .features {
+      padding: 100px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .features-header h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .features-header p {
+      color: #888;
+      font-size: 18px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: #161616;
+      border: 1px solid #222;
+      border-radius: 20px;
+      padding: 36px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(200, 241, 53, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      color: #777;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .how-it-works {
+      padding: 100px 24px;
+      background: #111;
+    }
+
+    .how-it-works-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .how-it-works h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 64px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      text-align: left;
+    }
+
+    .step {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      background: #c8f135;
+      color: #0d0d0d;
+      font-size: 14px;
+      font-weight: 800;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: #777;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .cta-section {
+      padding: 120px 24px;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .cta-section h2 span {
+      color: #c8f135;
+    }
+
+    .cta-section p {
+      color: #888;
+      font-size: 18px;
+      margin-bottom: 48px;
+    }
+
+    footer {
+      border-top: 1px solid #1a1a1a;
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer p {
+      color: #555;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #555;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: #c8f135;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        padding: 20px 24px;
+      }
+
+      footer {
+        padding: 32px 24px;
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Everi<span>Bet</span></div>
+    <a href="mailto:bmstudioco@gmail.com">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <div class="badge">Coming Soon to the App Store</div>
+    <h1>Any bet. Any friend. <span>Any time.</span></h1>
+    <p>Every argument. Every bet. Track it all with your friends — no stakes required.</p>
+    <div class="cta-group">
+      <a href="#notify" class="btn-primary">Get Early Access</a>
+      <a href="#how-it-works" class="btn-secondary">See how it works →</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="features-header">
+      <h2>Built for <span style="color:#c8f135">real bets</span> between real friends</h2>
+      <p>No sportsbooks. No odds. Just you, your friends, and bragging rights.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🤝</div>
+        <h3>1-on-1 Bets</h3>
+        <p>Challenge any friend to a bet on anything. They accept, you both track it, and the winner gets the glory.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3>Group Bets</h3>
+        <p>Get the whole crew in on it. Create group bets where everyone has a stake in the outcome.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Track Your Record</h3>
+        <p>See your all-time win/loss record. Know who owes who. Flex your stats.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h3>Stay Notified</h3>
+        <p>Get notified when friends challenge you, accept your bet, or when it's time to settle up.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Bet on Anything</h3>
+        <p>Sports, games, life events, trivia — if you can argue about it, you can bet on it.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>Bragging Rights</h3>
+        <p>The real prize. Keep the receipts. Never let your friends forget who was right.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works" id="how-it-works">
+    <div class="how-it-works-inner">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div>
+            <h3>Create a bet</h3>
+            <p>Name the bet, set the terms, and challenge a friend. It takes seconds.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>
+            <h3>Friend accepts</h3>
+            <p>Your friend gets notified, reviews the terms, and accepts or declines.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <h3>Wait for the outcome</h3>
+            <p>The bet goes live. Both sides watch and wait. No take-backs.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div>
+            <h3>Settle up & flex</h3>
+            <p>Confirm the winner, update your record, and make sure everyone knows about it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="notify">
+    <h2>Ready to <span>make it interesting?</span></h2>
+    <p>EveriBet is launching soon. Be the first to know.</p>
+    <a href="mailto:bmstudioco@gmail.com?subject=EveriBet Early Access" class="btn-primary">Get Early Access</a>
+  </section>
+
+  <footer>
+    <p>© 2026 EveriBet. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="mailto:bmstudioco@gmail.com">Contact</a>
+    </div>
+  </footer>
+
+</body>
 </html>
