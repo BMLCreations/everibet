@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — EveriBet</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow-x: hidden;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 48px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(13, 13, 13, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: #c8f135;
+    }
+
+    nav a.nav-link {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 15px;
+      transition: color 0.2s;
+    }
+
+    nav a.nav-link:hover {
+      color: #c8f135;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 140px 24px 80px;
+    }
+
+    .page-header {
+      margin-bottom: 56px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .page-header .label {
+      display: inline-block;
+      background: rgba(200, 241, 53, 0.1);
+      border: 1px solid rgba(200, 241, 53, 0.3);
+      color: #c8f135;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .page-header h1 {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+
+    .page-header p {
+      color: #666;
+      font-size: 15px;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .section p {
+      color: #888;
+      line-height: 1.8;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .section ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 12px;
+    }
+
+    .section ul li {
+      color: #888;
+      font-size: 15px;
+      line-height: 1.8;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .section ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: #c8f135;
+    }
+
+    .highlight-box {
+      background: rgba(200, 241, 53, 0.05);
+      border: 1px solid rgba(200, 241, 53, 0.15);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+    }
+
+    .highlight-box p {
+      color: #aaa;
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .highlight-box strong {
+      color: #c8f135;
+    }
+
+    .warning-box {
+      background: rgba(255, 80, 80, 0.05);
+      border: 1px solid rgba(255, 80, 80, 0.2);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+
+    .warning-box p {
+      color: #aaa;
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      margin: 48px 0;
+    }
+
+    .contact-box {
+      background: #161616;
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .contact-box h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      color: #777;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .contact-box a {
+      background: #c8f135;
+      color: #0d0d0d;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-block;
+    }
+
+    .contact-box a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(200, 241, 53, 0.3);
+    }
+
+    footer {
+      border-top: 1px solid #1a1a1a;
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer p {
+      color: #555;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #555;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: #c8f135;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 20px 24px; }
+      footer {
+        padding: 32px 24px;
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">Everi<span>Bet</span></a>
+    <a href="mailto:bmstudioco@gmail.com" class="nav-link">Contact</a>
+  </nav>
+
+  <div class="container">
+
+    <div class="page-header">
+      <div class="label">Legal</div>
+      <h1>Terms of Service</h1>
+      <p>Effective Date: June 5, 2026 &nbsp;·&nbsp; Last Updated: June 5, 2026</p>
+    </div>
+
+    <div class="highlight-box">
+      <p><strong>The short version:</strong> EveriBet is a social bet tracking app for friends. No real money is involved. By using the app, you agree to these terms. Be respectful, don't abuse the platform, and have fun.</p>
+    </div>
+
+    <div class="section">
+      <h2>1. Acceptance of Terms</h2>
+      <p>By downloading, installing, or using EveriBet, you agree to be bound by these Terms of Service and our <a href="/privacy.html" style="color:#c8f135;">Privacy Policy</a>. If you do not agree to these terms, do not use the app.</p>
+      <p>These Terms constitute a legally binding agreement between you and BML Creations, the developer and operator of EveriBet.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>2. Eligibility</h2>
+      <p>You must be at least 17 years of age to use EveriBet. By using the app, you represent and warrant that you meet this age requirement.</p>
+      <p>If you are under 18, you should review these terms with a parent or guardian before using the app.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>3. No Real Money Gambling</h2>
+      <div class="warning-box">
+        <p><strong style="color:#fff">EveriBet is not a gambling platform.</strong> No real money is wagered, transferred, held, or paid out through the app under any circumstances. All bets are informal social agreements between users and have no monetary value within or outside the platform.</p>
+      </div>
+      <p>EveriBet does not facilitate, encourage, or enable real-money gambling. Any arrangement between users to exchange real money as a result of a bet is entirely outside of EveriBet, at the users' own discretion and risk, and is not endorsed, supported, or condoned by BML Creations.</p>
+      <p>BML Creations accepts no liability for any real-money disputes between users arising from bets tracked on EveriBet.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>4. User Accounts</h2>
+      <p>You are responsible for maintaining the security of your account and password. You agree to:</p>
+      <ul>
+        <li>Provide accurate and truthful information when creating your account</li>
+        <li>Keep your login credentials confidential</li>
+        <li>Notify us immediately of any unauthorized use of your account</li>
+        <li>Be responsible for all activity that occurs under your account</li>
+      </ul>
+      <p>We reserve the right to suspend or terminate accounts that violate these terms.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>5. Acceptable Use</h2>
+      <p>You agree not to use EveriBet to:</p>
+      <ul>
+        <li>Harass, threaten, or intimidate other users</li>
+        <li>Post offensive, hateful, or discriminatory content in bet descriptions or group names</li>
+        <li>Attempt to manipulate or cheat bet outcomes</li>
+        <li>Create fake accounts or impersonate other users</li>
+        <li>Use the app for any unlawful purpose</li>
+        <li>Attempt to reverse engineer, hack, or disrupt the app or its servers</li>
+        <li>Use automated bots or scripts to interact with the app</li>
+      </ul>
+      <p>Violation of these rules may result in immediate account suspension or termination without notice.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>6. User Content</h2>
+      <p>You retain ownership of the content you create in EveriBet (bet descriptions, group names, etc.). By submitting content, you grant BML Creations a non-exclusive, royalty-free license to store and display that content solely for the purpose of operating the app.</p>
+      <p>You are solely responsible for the content you post. We do not monitor all user content but reserve the right to remove content that violates these terms.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>7. In-App Purchases & Subscriptions</h2>
+      <p>EveriBet offers an optional one-time purchase to unlock premium features and remove ads. All purchases are processed through Apple's App Store and are subject to Apple's payment terms.</p>
+      <ul>
+        <li>All purchases are final. Refunds are handled by Apple in accordance with their refund policy.</li>
+        <li>Premium features are tied to your account and cannot be transferred.</li>
+        <li>We reserve the right to modify, add, or remove features at any time.</li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>8. Advertising</h2>
+      <p>Free users of EveriBet will see advertisements served by Google AdMob. By using the free version of the app, you acknowledge and agree to the display of ads. Purchasing a subscription removes all ads.</p>
+      <p>You will be asked for permission to enable personalized ads via Apple's App Tracking Transparency framework. This is optional and the app functions regardless of your choice.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>9. Intellectual Property</h2>
+      <p>EveriBet, its logo, design, and all associated content are the intellectual property of BML Creations. You may not copy, reproduce, distribute, or create derivative works from any part of EveriBet without our express written permission.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>10. Disclaimers & Limitation of Liability</h2>
+      <p>EveriBet is provided "as is" without warranties of any kind, either express or implied. We do not guarantee that the app will be error-free, uninterrupted, or free of bugs.</p>
+      <p>To the maximum extent permitted by law, BML Creations shall not be liable for:</p>
+      <ul>
+        <li>Any indirect, incidental, or consequential damages arising from your use of the app</li>
+        <li>Loss of data, bets, or account access</li>
+        <li>Disputes between users regarding bet outcomes</li>
+        <li>Any real-money arrangements made between users outside of the app</li>
+      </ul>
+      <p>Our total liability to you for any claim arising from these terms shall not exceed the amount you paid us in the 12 months prior to the claim.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>11. Termination</h2>
+      <p>We reserve the right to suspend or terminate your account at any time for violation of these terms, without prior notice. You may also delete your account at any time from within the app or by contacting us.</p>
+      <p>Upon termination, your right to use EveriBet immediately ceases. Provisions of these terms that by their nature should survive termination will remain in effect.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>12. Dispute Resolution</h2>
+      <p>Any dispute arising from these Terms of Service will be resolved through binding individual arbitration under the rules of the American Arbitration Association. <strong style="color:#fff">You waive your right to participate in any class action lawsuit or class-wide arbitration against BML Creations.</strong></p>
+      <p>Before initiating arbitration, you agree to first contact us at <a href="mailto:bmstudioco@gmail.com" style="color:#c8f135;">bmstudioco@gmail.com</a> and attempt to resolve the dispute informally within 30 days.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>13. Governing Law</h2>
+      <p>These Terms of Service are governed by the laws of the State of New York, without regard to its conflict of law provisions. Any legal proceedings shall be brought exclusively in the courts of New York.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>14. Changes to These Terms</h2>
+      <p>We may update these Terms of Service from time to time. We will notify users of material changes through the app. Continued use of EveriBet after changes take effect constitutes acceptance of the new terms.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="contact-box">
+      <h3>Questions about these terms?</h3>
+      <p>We're happy to help. Reach out anytime.</p>
+      <a href="mailto:bmstudioco@gmail.com">Contact Us</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 EveriBet. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="mailto:bmstudioco@gmail.com">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>
