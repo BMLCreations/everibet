@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — EveriBet</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow-x: hidden;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 48px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(13, 13, 13, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: #c8f135;
+    }
+
+    nav a.nav-link {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 15px;
+      transition: color 0.2s;
+    }
+
+    nav a.nav-link:hover {
+      color: #c8f135;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 140px 24px 80px;
+    }
+
+    .page-header {
+      margin-bottom: 56px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .page-header .label {
+      display: inline-block;
+      background: rgba(200, 241, 53, 0.1);
+      border: 1px solid rgba(200, 241, 53, 0.3);
+      color: #c8f135;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .page-header h1 {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+
+    .page-header p {
+      color: #666;
+      font-size: 15px;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .section p {
+      color: #888;
+      line-height: 1.8;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .section ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 12px;
+    }
+
+    .section ul li {
+      color: #888;
+      font-size: 15px;
+      line-height: 1.8;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .section ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: #c8f135;
+    }
+
+    .highlight-box {
+      background: rgba(200, 241, 53, 0.05);
+      border: 1px solid rgba(200, 241, 53, 0.15);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+    }
+
+    .highlight-box p {
+      color: #aaa;
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .highlight-box strong {
+      color: #c8f135;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      margin: 48px 0;
+    }
+
+    .contact-box {
+      background: #161616;
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .contact-box h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      color: #777;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .contact-box a {
+      background: #c8f135;
+      color: #0d0d0d;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-block;
+    }
+
+    .contact-box a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(200, 241, 53, 0.3);
+    }
+
+    footer {
+      border-top: 1px solid #1a1a1a;
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer p {
+      color: #555;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #555;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: #c8f135;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 20px 24px; }
+      footer {
+        padding: 32px 24px;
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">Everi<span>Bet</span></a>
+    <a href="mailto:bmstudioco@gmail.com" class="nav-link">Contact</a>
+  </nav>
+
+  <div class="container">
+
+    <div class="page-header">
+      <div class="label">Legal</div>
+      <h1>Privacy Policy</h1>
+      <p>Effective Date: June 5, 2026 &nbsp;·&nbsp; Last Updated: June 5, 2026</p>
+    </div>
+
+    <div class="highlight-box">
+      <p><strong>The short version:</strong> We collect only what we need to run EveriBet. We don't sell your data. We don't share it with advertisers. You can request deletion of your account at any time.</p>
+    </div>
+
+    <div class="section">
+      <h2>Who We Are</h2>
+      <p>EveriBet is a mobile application developed and operated by BML Creations. We built EveriBet to let friends track casual bets on anything — no real money, no sportsbooks, just bragging rights.</p>
+      <p>If you have any questions about this policy, contact us at <a href="mailto:bmstudioco@gmail.com" style="color:#c8f135;">bmstudioco@gmail.com</a>.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>Information We Collect</h2>
+      <p>We collect the following when you use EveriBet:</p>
+      <ul>
+        <li>Email address and username when you create an account</li>
+        <li>Bets you create, accept, or participate in</li>
+        <li>Friends and groups you interact with in the app</li>
+        <li>Device type and OS version for compatibility purposes</li>
+        <li>In-app notification preferences</li>
+      </ul>
+      <p>We do not collect your location, contacts, camera, or any data outside of normal app usage.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>How We Use Your Information</h2>
+      <ul>
+        <li>To create and manage your EveriBet account</li>
+        <li>To facilitate bets between you and your friends</li>
+        <li>To send in-app notifications about your bets</li>
+        <li>To maintain your win/loss record and bet history</li>
+        <li>To improve app performance and fix bugs</li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>Data Storage & Security</h2>
+      <p>Your data is stored securely using Supabase, a trusted cloud database provider. All data is encrypted in transit and at rest. We apply row-level security to ensure users can only access data they are permitted to see.</p>
+      <p>We do not sell, rent, trade, or share your personal information with any third parties for marketing or advertising purposes.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>In-App Purchases</h2>
+      <p>EveriBet offers an optional one-time purchase to unlock premium features. All payments are processed securely through Apple's App Store. We never see or store your payment information.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>No Real Money Gambling</h2>
+      <p>EveriBet is a social bet tracking app. No real money is wagered, transferred, or processed through the app at any time. All bets are informal agreements between users and carry no monetary value within the platform.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>Children's Privacy</h2>
+      <p>EveriBet is intended for users 17 years of age and older. We do not knowingly collect personal information from children under 13. If we become aware that a child under 13 has provided us with personal information, we will delete it immediately.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>Your Rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>Access the personal data we hold about you</li>
+        <li>Request correction of inaccurate data</li>
+        <li>Request deletion of your account and all associated data</li>
+        <li>Withdraw consent at any time by deleting your account</li>
+      </ul>
+      <p>To exercise any of these rights, contact us at <a href="mailto:bmstudioco@gmail.com" style="color:#c8f135;">bmstudioco@gmail.com</a>.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+      <h2>Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last Updated" date at the top of this page. For significant changes, we will notify users through the app.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="contact-box">
+      <h3>Questions about your privacy?</h3>
+      <p>We're happy to help. Reach out anytime.</p>
+      <a href="mailto:bmstudioco@gmail.com">Contact Us</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 EveriBet. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="mailto:bmstudioco@gmail.com">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>
